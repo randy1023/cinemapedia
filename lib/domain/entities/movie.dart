@@ -1,4 +1,4 @@
-
+// Es la entidad que va a tener las pelicula en esta app las caracteristicas
 class Movie {
   final bool adult;
   final String backdropPath;
