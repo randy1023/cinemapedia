@@ -1,3 +1,5 @@
+export 'package:cinemapedia/presentation/delegates/search_movie_delegate.dart';
+
 export 'shared/full_screen_loader.dart';
 
 export 'package:cinemapedia/presentation/widgets/shared/custom_appbar.dart';
