@@ -1,13 +1,48 @@
-import 'package:cinemapedia/presentation/screen/screens.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:cinemapedia/presentation/screen/screens.dart';
+
+import '../../presentation/views/views.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
-    GoRoute(
+    ShellRoute(
+        builder: (context, state, child) {
+          return HomeScreen(childView: child);
+        },
+        routes: [
+          GoRoute(
+              path: '/',
+              builder: (context, state) {
+                return const HomeView();
+              },
+              routes: [
+                GoRoute(
+                  path: 'movie/:id',
+                  name: MovieScreen.name,
+                  builder: (context, state) {
+                    final movieId = state.pathParameters['id'] ?? 'no-id';
+
+                    return MovieScreen(movieId: movieId);
+                  },
+                ),
+              ]),
+          GoRoute(
+            path: '/favorite',
+            builder: (context, state) {
+              return const FavoritesView();
+            },
+          ),
+        ])
+
+    // rutas padres e hijo
+    /*  GoRoute(
         path: '/',
         name: HomeScreen.name,
-        builder: (context, state) => const HomeScreen(),
+        builder: (context, state) => const HomeScreen(
+              childView: HomeView(),
+            ),
         routes: [
           GoRoute(
             path: 'movie/:id',
@@ -18,6 +53,6 @@ final appRouter = GoRouter(
               return MovieScreen(movieId: movieId);
             },
           ),
-        ]),
+        ]), */
   ],
 );
