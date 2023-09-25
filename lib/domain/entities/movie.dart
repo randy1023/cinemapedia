@@ -1,5 +1,12 @@
+import 'package:isar/isar.dart';
+
+part 'movie.g.dart';
 // Es la entidad que va a tener las pelicula en esta app las caracteristicas
+
+@collection
 class Movie {
+  Id? isarId;
+
   final bool adult;
   final String backdropPath;
   final List<String> genreIds;
